@@ -31,7 +31,7 @@ export function SiteDock() {
       <div className="relative pointer-events-auto">
         <div
           className={cn(
-            'flex items-end gap-2 rounded-[1rem] border border-white/8 bg-[linear-gradient(180deg,rgba(15,15,18,0.86),rgba(10,10,12,0.74))] px-3 py-2 backdrop-blur-2xl shadow-[0_24px_70px_rgba(0,0,0,0.34)] transition-transform duration-300 ease-out before:absolute before:inset-x-4 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/15 before:to-transparent before:content-[\"\"] sm:gap-3 sm:rounded-[1.2rem] sm:px-4 sm:py-2.5',
+            'flex items-end gap-2 rounded-[1rem] border border-white/8 bg-[linear-gradient(180deg,rgba(15,15,18,0.86),rgba(10,10,12,0.74))] px-3 py-2 backdrop-blur-2xl shadow-[0_24px_70px_rgba(0,0,0,0.34)] transition-transform duration-300 ease-out before:absolute before:inset-x-4 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/15 before:to-transparent before:content-[\"\"] sm:gap-4 sm:rounded-[1.35rem] sm:px-5 sm:py-3',
             hoveredItem && 'scale-[1.03]',
           )}
         >
@@ -40,7 +40,7 @@ export function SiteDock() {
             const isHovered = hoveredItem === item.id
 
             const itemClasses = cn(
-              'relative flex h-9 w-9 items-center justify-center rounded-[0.8rem] border border-white/6 bg-white/[0.03] backdrop-blur-[2px] transition-all duration-300 ease-out sm:h-10 sm:w-10 sm:rounded-[0.9rem]',
+              'relative flex h-9 w-9 items-center justify-center rounded-[0.8rem] border border-white/6 bg-white/[0.03] backdrop-blur-[2px] transition-all duration-300 ease-out sm:h-12 sm:w-12 sm:rounded-[1rem]',
               isActive && 'border-emerald-300/18 bg-emerald-300/10 text-emerald-100 shadow-[0_0_24px_rgba(52,211,153,0.12)]',
               isHovered
                 ? 'scale-110 -translate-y-1 border-white/14 bg-white/[0.06]'
