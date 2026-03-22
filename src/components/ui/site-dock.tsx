@@ -1,7 +1,9 @@
 import * as React from 'react'
-import { CalendarDays, Handshake, Home, LogIn } from 'lucide-react'
+import { DoorOpen, Home } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
+import { ProductIcon } from '@/components/ui/product-icon'
+import { useTeaser } from '@/components/ui/teaser-context'
 import { cn } from '@/lib/utils'
 
 type DockItem = {
@@ -9,19 +11,20 @@ type DockItem = {
   label: string
   icon: React.ReactNode
   to?: string
-  href?: string
 }
 
 const dockItems: DockItem[] = [
   { id: 'home', icon: <Home size={20} />, label: 'Home', to: '/' },
-  { id: 'ibs', icon: <Handshake size={20} />, label: 'For IBs', to: '/ibs' },
-  { id: 'login', icon: <LogIn size={20} />, label: 'Login', href: 'https://app.liquex.co/auth' },
-  { id: 'demo', icon: <CalendarDays size={20} />, label: 'Book demo', href: '#' },
+  { id: 'affiliate', icon: <ProductIcon name="affiliate" size="sm" className="shadow-none" />, label: 'Affiliate OS', to: '/ibs' },
+  { id: 'broker', icon: <ProductIcon name="broker" size="sm" className="shadow-none" />, label: 'Broker OS' },
+  { id: 'creator', icon: <ProductIcon name="creator" size="sm" className="shadow-none" />, label: 'Creator OS' },
+  { id: 'login', icon: <DoorOpen size={18} />, label: 'Login', to: 'https://app.liquex.co/auth' },
 ]
 
 export function SiteDock() {
   const [hoveredItem, setHoveredItem] = React.useState<string | null>(null)
   const location = useLocation()
+  const { showTeaser } = useTeaser()
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30 flex justify-center px-3 sm:bottom-5 sm:px-4">
@@ -72,6 +75,16 @@ export function SiteDock() {
             }
 
             if (item.to) {
+              const isExternal = item.to.startsWith('http')
+
+              if (isExternal) {
+                return (
+                  <a key={item.id} href={item.to} aria-label={item.label} {...sharedProps}>
+                    {content}
+                  </a>
+                )
+              }
+
               return (
                 <Link key={item.id} to={item.to} aria-label={item.label} {...sharedProps}>
                   {content}
@@ -80,9 +93,15 @@ export function SiteDock() {
             }
 
             return (
-              <a key={item.id} href={item.href} aria-label={item.label} {...sharedProps}>
+              <button
+                key={item.id}
+                type="button"
+                aria-label={item.label}
+                onClick={() => showTeaser("We're working on something cool 👀")}
+                {...sharedProps}
+              >
                 {content}
-              </a>
+              </button>
             )
           })}
         </div>
