@@ -1,20 +1,39 @@
-export default function LogoCloud() {
+import { InfiniteSlider } from '@/components/ui/infinite-slider'
+import { cn } from '@/lib/utils'
+
+type Logo = {
+  src: string
+  alt: string
+  width?: number
+  height?: number
+}
+
+type LogoCloudProps = React.ComponentProps<'div'> & {
+  logos: Logo[]
+}
+
+export function LogoCloud({ className, logos, ...props }: LogoCloudProps) {
   return (
-    <section className="bg-background py-12 md:py-14">
-      <div className="mx-auto max-w-5xl px-6">
-        <h2 className="text-center text-lg font-medium">Integrated with leading brokers</h2>
-        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-3 items-center gap-4 sm:mt-12 sm:gap-10">
-          <div className="flex items-center justify-center px-8 py-8">
-            <img className="h-24 w-auto object-contain" src="/VTMARKETS.png" alt="VT Markets Logo" />
-          </div>
-          <div className="flex items-center justify-center px-8 py-8">
-            <img className="h-14 w-auto object-contain" src="/vantage (1).png" alt="Vantage Logo" />
-          </div>
-          <div className="flex items-center justify-center px-8 py-8">
-            <img className="h-24 w-auto object-contain" src="/PUPRIME.png" alt="PU Prime Logo" />
-          </div>
-        </div>
-      </div>
-    </section>
+    <div
+      {...props}
+      className={cn(
+        'overflow-hidden py-4 [mask-image:linear-gradient(to_right,transparent,black_18%,black_82%,transparent)]',
+        className,
+      )}
+    >
+      <InfiniteSlider gap={42} reverse speed={80} speedOnHover={25}>
+        {logos.map((logo) => (
+          <img
+            alt={logo.alt}
+            className="pointer-events-none h-10 select-none object-contain opacity-60 grayscale md:h-12"
+            height={logo.height || 'auto'}
+            key={`logo-${logo.alt}`}
+            loading="lazy"
+            src={logo.src}
+            width={logo.width || 'auto'}
+          />
+        ))}
+      </InfiniteSlider>
+    </div>
   )
 }

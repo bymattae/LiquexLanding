@@ -11,7 +11,7 @@ export default function Testimonials() {
             <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-center">
               <img
                 className="h-6 w-fit"
-                src="/vantage (1).png"
+                src="/VantageNew.png"
                 alt="Vantage Logo"
                 height="24"
                 width="auto"
@@ -21,7 +21,7 @@ export default function Testimonials() {
 
               <div>
                 <cite className="text-xl font-semibold not-italic text-white">Owen</cite>
-                <span className="text-muted-foreground mt-1 block text-xl">Account Manager, Vantage</span>
+                <span className="text-muted-foreground mt-1 block text-xl">Senior, Vantage</span>
               </div>
             </div>
           </blockquote>

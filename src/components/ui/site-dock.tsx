@@ -1,0 +1,92 @@
+import * as React from 'react'
+import { CalendarDays, Handshake, Home, LogIn } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+
+import { cn } from '@/lib/utils'
+
+type DockItem = {
+  id: string
+  label: string
+  icon: React.ReactNode
+  to?: string
+  href?: string
+}
+
+const dockItems: DockItem[] = [
+  { id: 'home', icon: <Home size={20} />, label: 'Home', to: '/' },
+  { id: 'ibs', icon: <Handshake size={20} />, label: 'For IBs', to: '/ibs' },
+  { id: 'login', icon: <LogIn size={20} />, label: 'Login', href: 'https://app.liquex.co/auth' },
+  { id: 'demo', icon: <CalendarDays size={20} />, label: 'Book demo', href: '#' },
+]
+
+export function SiteDock() {
+  const [hoveredItem, setHoveredItem] = React.useState<string | null>(null)
+  const location = useLocation()
+
+  return (
+    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30 flex justify-center px-3 sm:bottom-5 sm:px-4">
+      <div className="relative pointer-events-auto">
+        <div
+          className={cn(
+            'flex items-end gap-2 rounded-[1rem] border border-white/8 bg-[linear-gradient(180deg,rgba(15,15,18,0.86),rgba(10,10,12,0.74))] px-3 py-2 backdrop-blur-2xl shadow-[0_24px_70px_rgba(0,0,0,0.34)] transition-transform duration-300 ease-out before:absolute before:inset-x-4 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-white/15 before:to-transparent before:content-[\"\"] sm:gap-3 sm:rounded-[1.2rem] sm:px-4 sm:py-2.5',
+            hoveredItem && 'scale-[1.03]',
+          )}
+        >
+          {dockItems.map((item) => {
+            const isActive = item.to ? location.pathname === item.to : false
+            const isHovered = hoveredItem === item.id
+
+            const itemClasses = cn(
+              'relative flex h-9 w-9 items-center justify-center rounded-[0.8rem] border border-white/6 bg-white/[0.03] backdrop-blur-[2px] transition-all duration-300 ease-out sm:h-10 sm:w-10 sm:rounded-[0.9rem]',
+              isActive && 'border-emerald-300/18 bg-emerald-300/10 text-emerald-100 shadow-[0_0_24px_rgba(52,211,153,0.12)]',
+              isHovered
+                ? 'scale-110 -translate-y-1 border-white/14 bg-white/[0.06]'
+                : 'hover:scale-105 hover:-translate-y-0.5 hover:bg-white/[0.05]',
+            )
+
+            const content = (
+              <>
+                <div className={cn('text-white transition-all duration-300', isHovered && 'scale-105')}>
+                  {item.icon}
+                </div>
+                {isActive ? <div className="absolute -bottom-1.5 h-1 w-4 rounded-full bg-emerald-300/85 shadow-[0_0_12px_rgba(110,231,183,0.55)]" /> : null}
+                <div
+                  className={cn(
+                    'pointer-events-none absolute -top-9 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-white/5 bg-black/72 px-2 py-1 text-[11px] text-white/85 opacity-0 shadow-sm backdrop-blur transition-all duration-200 sm:block',
+                    isHovered && 'translate-y-0 opacity-100',
+                    !isHovered && 'translate-y-1',
+                  )}
+                >
+                  {item.label}
+                  <div className="absolute left-1/2 top-full -translate-x-1/2">
+                    <div className="h-2 w-2 rotate-45 border-b border-r border-white/5 bg-black/70" />
+                  </div>
+                </div>
+              </>
+            )
+
+            const sharedProps = {
+              className: itemClasses,
+              onMouseEnter: () => setHoveredItem(item.id),
+              onMouseLeave: () => setHoveredItem(null),
+            }
+
+            if (item.to) {
+              return (
+                <Link key={item.id} to={item.to} aria-label={item.label} {...sharedProps}>
+                  {content}
+                </Link>
+              )
+            }
+
+            return (
+              <a key={item.id} href={item.href} aria-label={item.label} {...sharedProps}>
+                {content}
+              </a>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}

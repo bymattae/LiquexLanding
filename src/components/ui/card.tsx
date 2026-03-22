@@ -7,7 +7,7 @@ const cardVariants = cva('rounded-lg border bg-card text-card-foreground shadow-
   variants: {
     variant: {
       default: '',
-      soft: 'border-border/60 bg-background shadow-foreground/5 shadow-md ring-1 ring-foreground/5',
+      soft: 'border-white/8 bg-black/26 shadow-[0_18px_40px_rgba(0,0,0,0.16)] ring-1 ring-white/5',
     },
   },
   defaultVariants: {

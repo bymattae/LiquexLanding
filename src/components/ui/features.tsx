@@ -10,7 +10,7 @@ export default function FeaturesSection() {
       <div className="py-16 md:py-20">
         <div className="mx-auto w-full max-w-5xl px-6">
           <div>
-            <h2 className="text-foreground max-w-2xl text-balance text-4xl font-semibold">Retention tools built for IBs</h2>
+            <h2 className="text-foreground max-w-2xl text-balance text-4xl font-semibold">The only retention platform for IB&apos;s</h2>
           </div>
           <div className="mt-12 grid grid-cols-1 gap-4 md:mt-14 md:grid-cols-2 lg:grid-cols-3">
             <Card variant="soft" className="overflow-hidden p-6">
@@ -77,21 +77,21 @@ const MeetingIllustration = () => {
           <div className="text-sm font-semibold">Client Activity Review</div>
           <div className="mt-1 text-xs text-muted-foreground">2:30 - 3:45 PM</div>
         </div>
-        <div className="rounded-full bg-emerald-500/15 px-2.5 py-1 text-[10px] font-medium text-emerald-300">Live</div>
+        <div className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-medium text-white/82">Live</div>
       </div>
 
-      <div className="rounded-2xl border border-border/60 bg-background/60 p-3.5">
+      <div className="rounded-2xl border border-white/8 bg-black/30 p-3.5">
         <div className="mb-3 flex items-center justify-between gap-4">
           <div>
             <div className="mt-1 text-2xl font-semibold">962</div>
             <div className="text-xs text-muted-foreground">clients need attention</div>
           </div>
-          <div className="size-14 rounded-full border-[7px] border-emerald-500 border-r-zinc-700 border-b-amber-500 border-l-red-500 bg-transparent" />
+          <div className="size-14 rounded-full border-[7px] border-white/75 border-r-zinc-700 border-b-amber-500 border-l-red-500 bg-transparent" />
         </div>
 
         <div className="space-y-1.5">
           {[
-            ['Active', '151', 'bg-emerald-400'],
+            ['Active', '151', 'bg-white'],
             ['Churning', '48', 'bg-amber-400'],
             ['At Risk', '8', 'bg-red-400'],
           ].map(([label, value, color]) => (
@@ -120,13 +120,13 @@ const CodeReviewIllustration = () => {
         <div className="rounded-full border border-red-500/30 bg-red-500/10 px-2.5 py-1 text-[10px] font-medium text-red-300">At risk</div>
       </div>
 
-      <div className="mt-3 rounded-2xl border border-border/60 bg-background/60 p-3.5">
+      <div className="mt-3 rounded-2xl border border-white/8 bg-black/30 p-3.5">
         <div className="mb-3 grid grid-cols-2 gap-3">
-          <div className="rounded-xl border border-border/60 bg-foreground/[0.03] p-3">
+          <div className="rounded-xl border border-white/6 bg-white/[0.02] p-3">
             <div className="text-[11px] text-muted-foreground">Last trade</div>
             <div className="mt-1.5 text-lg font-semibold">2 days ago</div>
           </div>
-          <div className="rounded-xl border border-border/60 bg-foreground/[0.03] p-3">
+          <div className="rounded-xl border border-white/6 bg-white/[0.02] p-3">
             <div className="text-[11px] text-muted-foreground">Balance change</div>
             <div className="mt-1.5 text-lg font-semibold text-red-300">-18%</div>
           </div>
@@ -158,14 +158,14 @@ const AIAssistantIllustration = () => {
         <Sparkles className="size-3.5 fill-purple-300 stroke-purple-300" />
         <p className="mt-2 text-sm">Who should I follow up with today?</p>
       </div>
-      <div className="bg-foreground/5 mt-3 space-y-2 rounded-2xl p-3">
+        <div className="mt-3 space-y-2 rounded-2xl bg-white/[0.03] p-3">
         <div className="text-muted-foreground text-sm">Ask Retention Assistant</div>
 
-        <div className="rounded-xl border border-border/60 bg-background/70 px-3 py-2.5 text-xs text-foreground">
+        <div className="rounded-xl border border-white/6 bg-black/30 px-3 py-2.5 text-xs text-foreground">
           Prioritise Talal Khalid and Yasir Deen.
         </div>
 
-        <div className="rounded-xl border border-border/50 bg-background/70 px-3 py-2 text-xs text-muted-foreground">
+        <div className="rounded-xl border border-white/6 bg-black/30 px-3 py-2 text-xs text-muted-foreground">
           3 churning clients
         </div>
 
@@ -194,14 +194,14 @@ const BookOverviewIllustration = () => {
       <div className="mb-1 text-sm font-semibold">Book Overview</div>
       <div className="mt-1 text-xs text-muted-foreground">Active · At Risk · Dormant</div>
 
-      <div className="mt-3 rounded-2xl border border-border/60 bg-background/60 p-3.5">
+      <div className="mt-3 rounded-2xl border border-white/8 bg-black/30 p-3.5">
         <div className="mb-3 grid grid-cols-3 gap-2">
           {[
-            ['Active', '151', 'text-emerald-300'],
+            ['Active', '151', 'text-white'],
             ['At Risk', '8', 'text-red-300'],
             ['Dormant', '17', 'text-zinc-300'],
           ].map(([label, value, color]) => (
-            <div key={label} className="rounded-xl border border-border/60 bg-foreground/[0.03] p-3 text-center">
+            <div key={label} className="rounded-xl border border-white/6 bg-white/[0.02] p-3 text-center">
               <div className="text-[11px] text-muted-foreground">{label}</div>
               <div className={`mt-2 text-lg font-semibold ${color}`}>{value}</div>
             </div>
@@ -232,21 +232,21 @@ const IbTrackingIllustration = () => {
           <div className="text-sm font-semibold">IB Performance Update</div>
           <div className="mt-1 text-xs text-muted-foreground">Hierarchy visibility</div>
         </div>
-        <div className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-medium text-emerald-300">Healthy</div>
+        <div className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-medium text-white/82">Healthy</div>
       </div>
 
-      <div className="mt-3 rounded-2xl border border-border/60 bg-background/60 p-3.5">
+      <div className="mt-3 rounded-2xl border border-white/8 bg-black/30 p-3.5">
         <div className="space-y-2">
           {[
             ['Finluence', '+12%', '258 clients'],
             ['Sub-IB A', '+8%', '84 clients'],
           ].map(([name, delta, clients]) => (
-            <div key={name} className="flex items-center justify-between rounded-xl border border-border/50 bg-foreground/[0.03] px-3 py-3">
+            <div key={name} className="flex items-center justify-between rounded-xl border border-white/6 bg-white/[0.02] px-3 py-3">
               <div>
                 <div className="text-sm font-medium">{name}</div>
                 <div className="mt-1 text-[11px] text-muted-foreground">{clients}</div>
               </div>
-              <span className={delta.startsWith('-') ? 'text-sm font-semibold text-red-300' : 'text-sm font-semibold text-emerald-300'}>{delta}</span>
+              <span className={delta.startsWith('-') ? 'text-sm font-semibold text-red-300' : 'text-sm font-semibold text-white'}>{delta}</span>
             </div>
           ))}
         </div>
@@ -262,7 +262,7 @@ const FollowUpIllustration = () => {
         <Sparkles className="size-3.5 fill-purple-300 stroke-purple-300" />
         <p className="mt-2 text-sm">Pending Follow-Ups</p>
       </div>
-      <div className="bg-foreground/5 mt-3 space-y-2 rounded-2xl p-3">
+      <div className="mt-3 space-y-2 rounded-2xl bg-white/[0.03] p-3">
         <div className="text-muted-foreground text-sm">12 clients need attention</div>
 
         <div className="space-y-2">
@@ -270,7 +270,7 @@ const FollowUpIllustration = () => {
             ['Talal Khalid', 'At Risk', '24h'],
             ['Yasir Deen', 'Dormant', 'Today'],
           ].map(([name, state, eta]) => (
-            <div key={name} className="grid grid-cols-[1fr_auto_auto] items-center gap-2 rounded-xl border border-border/50 bg-background/70 px-3 py-2 text-xs">
+            <div key={name} className="grid grid-cols-[1fr_auto_auto] items-center gap-2 rounded-xl border border-white/6 bg-black/30 px-3 py-2 text-xs">
               <span className="text-foreground">{name}</span>
               <span className="rounded-full border px-2 py-1 text-[10px] text-muted-foreground">{state}</span>
               <span className="text-muted-foreground">{eta}</span>

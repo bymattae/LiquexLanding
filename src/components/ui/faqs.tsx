@@ -30,13 +30,13 @@ const faqItems = [
 
 export default function FAQs() {
   return (
-    <section className="scroll-py-16 py-16 md:py-20">
+    <section className="scroll-py-16 py-16 pb-4 md:py-20 md:pb-6">
       <div className="mx-auto max-w-5xl px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-4xl font-semibold tracking-tight text-white md:text-5xl">Frequently Asked Questions</h2>
         </div>
 
-        <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-border/70 bg-card/40 px-8 py-2 shadow-sm">
+        <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-white/8 bg-black/26 px-8 py-2 shadow-[0_18px_40px_rgba(0,0,0,0.16)]">
           <Accordion type="single" collapsible defaultValue="item-1">
             {faqItems.map((item) => (
               <AccordionItem key={item.id} value={item.id}>
