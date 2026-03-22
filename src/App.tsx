@@ -49,7 +49,7 @@ export default function App() {
   return (
         <section className="mx-auto flex min-h-[calc(100vh-7rem)] w-full max-w-5xl flex-1 items-start px-4 pb-24 pt-14 sm:items-center sm:px-6 sm:pb-36 sm:pt-20">
           <div className="w-full">
-            <div className="pt-10 sm:pt-10">
+            <div className="pt-20 sm:pt-18">
               <AnimatedGroup
                 className="flex justify-center"
                 variants={{
