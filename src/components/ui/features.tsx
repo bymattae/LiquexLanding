@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { ArrowUp, CalendarCheck, Globe, Plus, Sparkles, Target } from 'lucide-react'
+import { ArrowUp, Bot, CalendarCheck, Eye, Globe, Network, Plus, Sparkles, Target, WavesLadder } from 'lucide-react'
 
 export default function FeaturesSection() {
   return (
@@ -29,7 +29,7 @@ export default function FeaturesSection() {
               <CodeReviewIllustration />
             </Card>
             <Card variant="soft" className="group overflow-hidden px-6 pt-6">
-              <Sparkles className="text-primary size-5" />
+              <Bot className="text-primary size-5" />
               <h3 className="text-foreground mt-5 text-lg font-semibold">Retention Assistant</h3>
               <p className="text-muted-foreground mt-3 text-balance">Know exactly who to follow up with, when to act, and how to recover clients before they disappear.</p>
 
@@ -39,7 +39,7 @@ export default function FeaturesSection() {
             </Card>
 
             <Card variant="soft" className="overflow-hidden p-6">
-              <Target className="text-primary size-5" />
+              <Eye className="text-primary size-5" />
               <h3 className="text-foreground mt-5 text-lg font-semibold">Client Book Visibility</h3>
               <p className="text-muted-foreground mt-3 text-balance">See your entire book in one place, filtered by activity, balance, and lifecycle state.</p>
 
@@ -47,14 +47,14 @@ export default function FeaturesSection() {
             </Card>
 
             <Card variant="soft" className="group overflow-hidden px-6 pt-6">
-              <CalendarCheck className="text-primary size-5" />
+              <Network className="text-primary size-5" />
               <h3 className="text-foreground mt-5 text-lg font-semibold">Partner &amp; IB Tracking</h3>
               <p className="text-muted-foreground mt-3 text-balance">Monitor performance across IBs, sub-IBs, and client flows with full hierarchy visibility.</p>
 
               <IbTrackingIllustration />
             </Card>
             <Card variant="soft" className="group overflow-hidden px-6 pt-6">
-              <Sparkles className="text-primary size-5" />
+              <WavesLadder className="text-primary size-5" />
               <h3 className="text-foreground mt-5 text-lg font-semibold">Follow-Up Workflows</h3>
               <p className="text-muted-foreground mt-3 text-balance">Prioritise actions, manage client requests, and stay consistent with every follow-up.</p>
 
