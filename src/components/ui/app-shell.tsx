@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 export function AppShell() {
   const location = useLocation()
-  const isIBs = location.pathname === '/ibs'
+  const isIBs = location.pathname === '/affiliateos'
 
   return (
     <main className={cn('relative min-h-screen overflow-hidden text-white', isIBs && 'theme-ibs')}>

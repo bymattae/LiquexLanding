@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route element={<AppShell />}>
           <Route path="/" element={<App />} />
-          <Route path="/ibs" element={<IBsPage />} />
+          <Route path="/affiliateos" element={<IBsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

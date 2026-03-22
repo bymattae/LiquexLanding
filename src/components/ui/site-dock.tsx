@@ -15,7 +15,7 @@ type DockItem = {
 
 const dockItems: DockItem[] = [
   { id: 'home', icon: <Home size={20} />, label: 'Home', to: '/' },
-  { id: 'affiliate', icon: <ProductIcon name="affiliate" size="sm" className="shadow-none" />, label: 'Affiliate OS', to: '/ibs' },
+  { id: 'affiliate', icon: <ProductIcon name="affiliate" size="sm" className="shadow-none" />, label: 'Affiliate OS', to: '/affiliateos' },
   { id: 'broker', icon: <ProductIcon name="broker" size="sm" className="shadow-none" />, label: 'Broker OS' },
   { id: 'creator', icon: <ProductIcon name="creator" size="sm" className="shadow-none" />, label: 'Creator OS' },
   { id: 'login', icon: <DoorOpen size={18} />, label: 'Login', to: 'https://app.liquex.co/auth' },
