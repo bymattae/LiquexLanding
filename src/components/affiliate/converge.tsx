@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { AnimatePresence, motion, useInView } from 'framer-motion'
+import { AnimatePresence, motion, useInView, useScroll, useTransform } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { HomeHero } from '@/components/app/homehero'
 import { GET_URL } from '@/components/site/chrome'
@@ -213,20 +213,36 @@ const HERO_VIDEO = ''
 
 function HeroVideo() {
   const isFile = /\.(mp4|webm|mov)(\?|$)/i.test(HERO_VIDEO)
+  const ref = useRef<HTMLDivElement>(null)
+  // the screen starts tilted back and settles flat as you scroll into it
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start 25%'] })
+  const rotateX = useTransform(scrollYProgress, [0, 1], [18, 0])
+  const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1])
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 1.1, ease }}
-      id="video" className="relative mx-auto mt-14 max-w-5xl scroll-mt-24 sm:mt-16">
-      <div aria-hidden className="absolute -inset-x-10 -top-10 bottom-0 rounded-full bg-[radial-gradient(closest-side,rgba(56,189,248,0.12),rgba(167,139,250,0.08),transparent)] blur-2xl" />
-      {HERO_VIDEO ? (
-        <div className="relative aspect-video overflow-hidden rounded-[22px] bg-[#08090b] shadow-[0_40px_100px_rgba(0,0,0,0.6)]">
-          {isFile
-            ? <video src={HERO_VIDEO} autoPlay muted loop playsInline className="size-full object-cover" />
-            : <iframe src={HERO_VIDEO} title="Liquex" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen className="size-full" />}
+    <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 1.2, ease }}
+      id="video" className="relative mx-auto mt-14 max-w-5xl scroll-mt-24 [perspective:1600px] sm:mt-20">
+      {/* light behind the screen: a wide aurora and a bright horizon line */}
+      <div aria-hidden className="pointer-events-none absolute -inset-x-40 -top-32 h-[520px]" style={{ backgroundImage: 'radial-gradient(50% 55% at 50% 45%, rgba(124,108,250,0.32), rgba(56,189,248,0.10) 45%, transparent 72%)' }} />
+      <div aria-hidden className="pointer-events-none absolute -inset-x-24 top-0 h-px bg-gradient-to-r from-transparent via-[hsl(248_90%_80%/0.9)] to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-[20%] -top-6 h-12 rounded-full bg-[hsl(248_90%_75%/0.35)] blur-2xl" />
+      <motion.div style={{ rotateX, scale, transformOrigin: '50% 0%' }} className="relative">
+        <div className="relative overflow-hidden rounded-[20px] shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_50px_120px_-20px_rgba(70,60,200,0.45),0_30px_80px_rgba(0,0,0,0.7)]">
+          {/* a glint along the top edge of the glass */}
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+          {HERO_VIDEO ? (
+            <div className="relative aspect-video bg-[#08090b]">
+              {isFile
+                ? <video src={HERO_VIDEO} autoPlay muted loop playsInline className="size-full object-cover" />
+                : <iframe src={HERO_VIDEO} title="Liquex" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen className="size-full" />}
+            </div>
+          ) : (
+            /* until the film is ready: the Home screen, live */
+            <HomeHero />
+          )}
         </div>
-      ) : (
-        /* until the film is ready: the Home screen, live */
-        <div className="relative"><HomeHero /></div>
-      )}
+      </motion.div>
+      {/* fade the bottom of the screen into the page */}
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 -bottom-px h-32 bg-gradient-to-t from-black to-transparent" />
     </motion.div>
   )
 }
@@ -235,7 +251,7 @@ export function ConvergeHero() {
   return (
     <div className="relative isolate overflow-hidden px-3 pb-16 pt-32 sm:px-6 sm:pt-40">
       {/* a soft aurora behind the headline */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[620px]" style={{ backgroundImage: 'radial-gradient(40% 45% at 35% 30%, rgba(56,189,248,0.10), transparent 70%), radial-gradient(40% 45% at 65% 32%, rgba(139,92,246,0.12), transparent 70%)' }} />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[620px]" style={{ backgroundImage: 'radial-gradient(40% 45% at 35% 30%, rgba(56,189,248,0.13), transparent 70%), radial-gradient(40% 45% at 65% 32%, rgba(139,92,246,0.16), transparent 70%)' }} />
       <div className="relative mx-auto max-w-4xl text-center">
         <motion.span initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease }}
           className="inline-block text-[14px] font-medium text-zinc-400">

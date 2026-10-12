@@ -91,7 +91,7 @@ const COLS: [string, [string, string][]][] = [
   ['Legal', [['Privacy policy', '/privacy'], ['Terms of service', '/terms']]],
 ]
 
-const link = 'text-[14px] text-zinc-400 transition-colors hover:text-white'
+const link = 'text-[15.5px] text-zinc-300 transition-colors hover:text-white lg:text-[14px] lg:text-zinc-400'
 
 /** The footer: framed in the same hairlines as every section, then a quiet legal line and a large fading wordmark. */
 export function Footer() {
@@ -99,19 +99,21 @@ export function Footer() {
     <footer className="overflow-hidden px-3 pb-[env(safe-area-inset-bottom,0px)] pt-16 sm:px-6 sm:pt-24">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
-          <div className="col-span-2 px-1 pb-10 lg:col-span-1 lg:pb-0">
+          {/* brand: a soft card on phones, open on desktop */}
+          <div className="relative isolate col-span-2 mb-12 overflow-hidden rounded-2xl bg-white/[0.03] p-6 lg:col-span-1 lg:mb-0 lg:overflow-visible lg:rounded-none lg:bg-transparent lg:p-0 lg:px-1">
+            <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 lg:hidden" style={{ backgroundImage: 'radial-gradient(70% 80% at 85% 0%, rgba(139,92,246,0.18), transparent 70%), radial-gradient(50% 60% at 10% 0%, rgba(56,189,248,0.10), transparent 70%)' }} />
             <img src="/Liquexdark.png" alt="Liquex" className="h-7 w-auto" />
-            <p className="mt-5 max-w-[260px] text-[14.5px] leading-6 text-zinc-400">The full-stack platform to run your affiliate business.</p>
-            <Button asChild className="mt-6 h-10 rounded-full bg-white px-5 text-[14px] text-black hover:bg-white/90"><a href={GET_URL}>Book a demo</a></Button>
+            <p className="mt-5 max-w-[280px] text-[16px] leading-7 text-zinc-300 lg:max-w-[260px] lg:text-[14.5px] lg:leading-6 lg:text-zinc-400">The full-stack platform to run your affiliate business.</p>
+            <Button asChild className="mt-6 h-12 w-full rounded-full bg-white px-5 text-[15px] text-black hover:bg-white/90 lg:h-10 lg:w-auto lg:text-[14px]"><a href={GET_URL}>Book a demo</a></Button>
           </div>
-          <div className="px-1 pb-10 lg:pb-0">
+          <div className="px-1">
             <div className="text-[12px] font-medium uppercase tracking-[0.16em] text-zinc-500">Product</div>
             <ul className="mt-5 space-y-3">
               {PRODUCT.map(([k, h, dot]) => <li key={k}><SmartLink href={h} className={`${link} flex items-center gap-2.5`}><span className={`size-1.5 rounded-full ${dot}`} />{k}</SmartLink></li>)}
             </ul>
           </div>
           {COLS.map(([t, links], n) => (
-            <div key={t} className={`px-1 ${n === 0 ? 'pb-10 sm:pb-0' : ''}`} data-col={n}>
+            <div key={t} className={`px-1 ${n === 1 ? 'hidden lg:block' : ''}`}>
               <div className="text-[12px] font-medium uppercase tracking-[0.16em] text-zinc-500">{t}</div>
               <ul className="mt-5 space-y-3">
                 {links.map(([k, h]) => <li key={k}><SmartLink href={h} className={link}>{k}</SmartLink></li>)}
@@ -120,16 +122,20 @@ export function Footer() {
           ))}
         </div>
         <div aria-hidden className="mt-14 h-px bg-gradient-to-r from-transparent via-[hsl(248_85%_74%/0.45)] to-transparent" />
-        <div className="flex flex-col gap-2 px-1 py-6 text-[12.5px] text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 px-1 py-6 text-[12.5px] text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} Liquex. All rights reserved.</span>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="transition-colors hover:text-white">{CONTACT_EMAIL}</a>
+          <span className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <SmartLink href="/privacy" className="transition-colors hover:text-white lg:hidden">Privacy</SmartLink>
+            <SmartLink href="/terms" className="transition-colors hover:text-white lg:hidden">Terms</SmartLink>
+            <a href={`mailto:${CONTACT_EMAIL}`} className="transition-colors hover:text-white">{CONTACT_EMAIL}</a>
+          </span>
         </div>
       </div>
       <p className="mx-auto mt-2 max-w-6xl px-1 text-[11.5px] leading-5 text-zinc-600">
         Risk warning: Trading forex and CFDs carries a high level of risk and may not be suitable for all investors. Liquex is a software platform for introducing brokers and affiliates. It does not provide investment advice, hold client funds or execute trades.
       </p>
       {/* the sign-off: a large wordmark, fading into the bottom of the page */}
-      <div aria-hidden className="mx-auto -mb-[3vw] mt-10 max-w-6xl select-none bg-gradient-to-b from-[hsl(248_60%_80%/0.14)] to-transparent bg-clip-text text-center text-[17vw] font-semibold leading-[0.8] tracking-[-0.04em] text-transparent lg:text-[12.5rem]">
+      <div aria-hidden className="mx-auto -mb-[3vw] mt-10 max-w-6xl select-none bg-gradient-to-b from-[hsl(248_60%_80%/0.18)] to-transparent bg-clip-text text-center text-[17vw] font-semibold leading-[0.8] tracking-[-0.04em] text-transparent max-lg:text-[23vw] lg:text-[12.5rem]">
         LIQUEX
       </div>
     </footer>
